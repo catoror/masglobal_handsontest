@@ -1,0 +1,72 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block include_title %} {% endblock %}</title>
+    {% include "template_base/header.html" %}
+
+	{% block include_head %}
+	{% endblock %}
+
+
+</head>
+<body class="hold-transition skin-blue sidebar-mini">
+	<div class="wrapper">
+
+	{% include "template_base/tag_header.html" %}
+
+    <!-- Left side column. contains the logo and sidebar -->
+    <aside class="main-sidebar">
+        {% include "template_base/menu.html" %}
+        {% block include_menu %}
+        {% endblock %}
+    </aside>
+
+	<!-- Content Wrapper. Contains page content -->
+	<div class="content-wrapper">
+		<!-- Content Header (Page header) -->
+		<section class="content-header">
+			<h1>
+				Employee <small>gets a list of employees with their data</small>
+			</h1>
+		</section>
+
+		<!-- Main content -->
+		<section class="content">
+		    <div class="row">
+                <div class="col-md-12 center_div_custom text-center">
+                    <div class="box box-primary">
+                        <div class="padding_app_form">
+                            {% block content %}
+                            {% endblock %}
+                        </div>
+                    </div>
+                </div>
+			</div>
+		</section>
+		<!-- /.content -->
+	</div>
+	<!-- /.content-wrapper -->
+	{% include "template_base/tag_footer.html" %}
+
+	<!-- Control Sidebar -->
+    <aside class="control-sidebar control-sidebar-dark">
+        {% include "template_base/right_dropdown.html" %}
+        {% block include_right_menu %}
+        {% endblock %}
+    </aside>
+
+	<!-- /.control-sidebar -->
+	<!-- Add the sidebar's background. This div must be placed
+				immediately after the control sidebar -->
+	<div class="control-sidebar-bg"></div>
+</div>
+<!-- ./wrapper -->
+{% include "template_base/footer.html" %}
+
+{% block include_foot %}
+{% endblock %}
+
+</body>
+</html>

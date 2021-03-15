@@ -1,0 +1,33 @@
+{% extends 'template_base/base.html' %}
+
+{% load static %}
+
+{% load tags %}
+
+{% block include_title %} Get employee by ID {% endblock %}
+
+{% block include_head %}
+    <!-- DataTables -->
+    <link rel="stylesheet" href="{% static "/assets/template/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css" %}">
+{% endblock %}
+
+{% block include_foot %}
+{% endblock %}
+
+{% block content %}
+      <div class="row">
+        <div class="col-xs-12">
+
+            <div class="box-header">
+              <h2 class="box-title">Get Employee by ID</h2>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+				<img src="{% static "/assets/images/errors/404.jpg" %}" />
+
+            </div>
+
+        </div>
+<!--    </div>-->
+
+{% endblock %}

@@ -1,0 +1,176 @@
+{% extends 'template_base/base.html' %}
+
+{% load static %}
+
+{% load tags %}
+
+{% block include_title %} Get employee by ID {% endblock %}
+
+{% block include_head %}
+    <!-- DataTables -->
+    <link rel="stylesheet" href="{% static "/assets/template/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css" %}">
+    <link rel="stylesheet" type="text/css" href="{% static "/assets/template/bower_components/responsive_datatables/css/responsive.dataTables.css" %}">
+{% endblock %}
+
+{% block include_foot %}
+    <!-- DataTables -->
+    <script type="text/javascript" charset="utf8" src="{% static "/assets/template/bower_components/datatables.net/js/jquery.dataTables.min.js" %}"></script>
+    <script type="text/javascript" charset="utf8" src="{% static "/assets/template/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js" %}"></script>
+    <script type="text/javascript" charset="utf8" src="{% static "/assets/template/bower_components/responsive_datatables/js/dataTables.responsive.js" %}"></script>
+
+    <script type="text/javascript" charset="utf8" src="{% static '/assets/template/bower_components/datatables-buttons/js/dataTables.buttons.min.js' %}"></script>
+    <script type="text/javascript" charset="utf8" src="{% static '/assets/template/bower_components/datatables-buttons/js/buttons.flash.min.js' %}"></script>
+    <script type="text/javascript" charset="utf8" src="{% static '/assets/template/bower_components/datatables-buttons/js/jszip.min.js' %}"></script>
+    <script type="text/javascript" charset="utf8" src="{% static '/assets/template/bower_components/datatables-buttons/js/pdfmake.min.js' %}"></script>
+    <script type="text/javascript" charset="utf8" src="{% static '/assets/template/bower_components/datatables-buttons/js/vfs_fonts.js' %}"></script>
+    <script type="text/javascript" charset="utf8" src="{% static '/assets/template/bower_components/datatables-buttons/js/buttons.html5.min.js' %}"></script>
+    <script type="text/javascript" charset="utf8" src="{% static '/assets/template/bower_components/datatables-buttons/js/buttons.print.min.js' %}"></script>
+
+    <script type="text/javascript">
+        $("#employee_form").validate({
+            errorElement: 'div'
+        });
+    </script>
+    
+    
+    <script>
+        var tabla;
+        $(document).ready(function() {
+			$(window).keydown(function(event){
+				if(event.keyCode == 13) {
+					event.preventDefault();
+					$("#btn_get_data").click();
+					return false;
+				}
+			});
+            tabla = $('#list_table').DataTable({
+                responsive: true,
+				dom: "Bfrtip",
+				buttons: [
+					'copy', 'excel'
+				]
+            });
+        } );
+
+        $("#btn_get_data").on('click', function () {
+            var employee_id = $('#id_id').val();
+            $.ajax({
+                url: '{% url 'api_get_employees' %}',
+                type: 'GET',
+                data:
+                {
+                    'id': employee_id
+                },
+                dataType: 'json',
+                success: function (data)
+                {
+					console.log(data);
+
+					table_html = '\t\t\t\t<table id="list_table" name="list_table" class="display responsive table table-bordered table-hover table-responsive" cellspacing="0" width="100%">';
+					table_html += '\t\t\t\t\t<thead>';
+					table_html += '\t\t\t\t\t\t<tr>';
+					table_html += '\t\t\t\t\t\t\t<th>Id</th>';
+					table_html += '\t\t\t\t\t\t\t<th>Name</th>';
+					table_html += '\t\t\t\t\t\t\t<th>Contract Type</th>';
+					table_html += '\t\t\t\t\t\t\t<th>Role</th>';
+					table_html += '\t\t\t\t\t\t\t<th>Hourly Salary</th>';
+					table_html += '\t\t\t\t\t\t\t<th>Monthly Salary</th>';
+					table_html += '\t\t\t\t\t\t\t<th>Anual Salary</th>';
+					table_html += '\t\t\t\t\t\t</tr>';
+					table_html += '\t\t\t\t\t\t</thead>';
+					table_html += '\t\t\t\t\t<tbody>';
+					$.each(data, function(index, value) {
+						id = value["id"] === null ? 'No ID' : value["id"].toString();
+						name = value["name"] === null ? 'No Name' : value["name"].toString();
+						contractTypeName = value["contractTypeName"] === null ? 'Contract Type' : value["contractTypeName"].toString();
+						roleId = value["roleId"] === null ? 'No role ID' : value["roleId"].toString();
+						roleName = value["roleName"] === null ? 'No role Name' : value["roleName"].toString();
+						roleDescription = value["roleDescription"] === null ? '(No Role Description)' : value["roleDescription"].toString();
+						hourlySalary = value["hourlySalary"] === null ? 'No hourly salary ' : value["hourlySalary"].toString();
+						monthlySalary = value["monthlySalary"] === null ? 'No monthly salary' : value["monthlySalary"].toString();
+						calculatedAnualSalary = value["calculatedAnualSalary"] === null ? 'No Anual Salary' : value["calculatedAnualSalary"].toString();
+						table_html += '\t\t\t\t\t\t<tr>\n';
+						table_html += '\t\t\t\t\t\t\t<td>' + id + '</td>\n';
+						table_html += '\t\t\t\t\t\t\t<td>' + value["name"].toString() + '</td>\n';
+						table_html += '\t\t\t\t\t\t\t<td>' + value["contractTypeName"].toString() + '</td>\n';
+						table_html += '\t\t\t\t\t\t\t<td>' + value["roleId"].toString() + ' - ' + value["roleName"].toString() + ': ' + roleDescription + ' </td>\n';
+						table_html += '\t\t\t\t\t\t\t<td>' + value["hourlySalary"].toString() + '</td>\n';
+						table_html += '\t\t\t\t\t\t\t<td>' + value["monthlySalary"].toString() + '</td>\n';
+						table_html += '\t\t\t\t\t\t\t<td>' + value["calculatedAnualSalary"].toString() + '</td>\n';
+						table_html += '\t\t\t\t\t\t</tr>\n';
+					});
+					table_html += '\t\t\t\t\t</tbody>';
+					table_html += '\t\t\t\t</table>';
+
+					$("#table_container").html(table_html);
+
+					tabla = $('#list_table').DataTable({
+						responsive: true,
+						dom: "Bfrtip",
+						buttons: [
+							'copy', 'excel'
+						]
+					});
+
+					tabla.draw();
+                }
+            });
+        });
+    </script>
+{% endblock %}
+
+{% block content %}
+      <div class="row">
+        <div class="col-xs-12">
+
+            <div class="box-header">
+              <h2 class="box-title">Get Employee by ID</h2>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+
+                <form id="employee_form" name="employee_form" method="POST" class="post-form">
+					{% csrf_token %}
+					<div id="div_mensaje" class="col-xs-12 form-group text-center"></p></div>
+
+                    <div class="col-xs-12 form-group">
+                        {{ form.nombre.errors }}
+                        <label for="{{ form.id.id_for_label }}">Enter the Employee ID:</label>
+                        {{ form.id|addcss:"form-control" }}
+                    </div>
+
+                    <button id="btn_get_data" name="btn_get_data" type="button" class="save btn btn-info">GET DATA</button>
+                </form>
+                
+                
+                <br />
+                
+                
+                
+                <div id="table_container" class="col-xs-12 form-group">
+
+                    <table id="list_table" name="list_table" width="100%" class="display responsive table table-bordered table-hover table-responsive" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Name</th>
+                                <th>Contract Type</th>
+                                <th>Role</th>
+                                <th>Hourly Salary</th>
+                                <th>Monthly Salary</th>
+                                <th>Anual Salary</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="table_body">
+
+                        </tbody>
+                    </table>
+                </div>
+             </div>
+            </div>
+
+        </div>
+<!--    </div>-->
+
+{% endblock %}

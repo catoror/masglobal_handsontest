@@ -1,0 +1,60 @@
+@import "root_colors.css";
+@import "scroll-top.css";
+
+.navbar-nav > .user-menu > .dropdown-menu > li.user-header > img {
+    width: 60px;
+    height: 60px;
+}
+
+.navbar-nav > .user-menu > .dropdown-menu > li.user-header {
+    height: auto;
+}
+
+table > thead > tr > th, table > tbody > tr > td:first-child, .centrado_mayusculas {
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.btn > span {
+    margin-left: 5px;
+}
+
+.nopadding {
+    padding: 0;
+}
+
+.user-footer > a > span {
+    margin-left: 5px;
+}
+
+footer h1, footer h2, footer h3, footer h4, footer h5, footer h6 {
+    font-weight: bold;
+}
+
+.btn-social > :first-child {
+    top: 10%;
+    text-align: center;
+    border-right: none;
+}
+
+.btn-social {
+    display: inline-block;
+    width: 45px;
+    height: 45px;
+    border: 2px solid;
+    border-radius: 100%
+}
+
+.btn-social > i {
+    margin-left: 6px;
+}
+
+.btn-social:focus, .btn-social:hover {
+    border: solid 2px var(--color_1);
+}
+
+
+.form-control {
+    border-radius: 4px;
+    -moz-border-radius: 4px;
+}

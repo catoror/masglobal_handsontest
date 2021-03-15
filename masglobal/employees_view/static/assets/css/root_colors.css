@@ -1,0 +1,15 @@
+
+:root {
+    --color_1: #ffffff;/*#fad503;*/
+    --color_1_opaco: rgba(255, 255, 255, 0.5);/*rgba(250, 213, 3, 0.5);*/
+    --color_2: #081F2D;/*#002342; /* hsl(208, 100%, 13%) */
+    --color_3: white;
+    --color_4: green;
+    --color_5: #ff282f;
+    --color_6: black;
+
+
+
+
+    --color_2_opaco: #002342; /*#2D6B79; /*hsl(208, 100%, 10%); /* es el color_2 en hsl pero modificado en su luminosidad (ultimo valor) */
+}

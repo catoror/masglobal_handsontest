@@ -1,0 +1,183 @@
+@charset "UTF-8";
+
+.breadcrumb {
+    margin-bottom: 0;
+    float: left;
+    margin-top: 11px;
+    padding: 4px 15px 4px 10px;
+    list-style: none;
+    border-radius: 25px;
+}
+
+.breadcrumb, .breadcrumb i {
+    position: relative
+}
+
+.breadcrumb a {
+    color: #1a252f;
+}
+
+.breadcrumb a, .breadcrumb > .active, .breadcrumb > li {
+    font-weight: 400
+}
+
+
+.breadcrumb li:last-child {
+    font-weight: 400
+}
+
+.breadcrumb-arrow > li + li:before {
+    content: "\00bb\00a0";
+}
+
+.breadcrumb li + li:before {
+    padding: 0 5px
+}
+
+.breadcrumb li .icon:before {
+    margin-right: 10px
+}
+
+.content-header > .breadcrumb {
+    border: 1px solid #f1f1f1;
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: block;
+    margin: 10px auto
+}
+
+.breadcrumb > .active {
+    color: #58595f;
+    line-height: 24px
+}
+
+.breadcrumb-container {
+    position: relative
+}
+
+.breadcrumb.filemanager {
+    top: 0;
+    background: #f0f0f0;
+    border: 1px solid #E0E0E0;
+    border-bottom: 0;
+    border-radius: 0;
+    padding-left: 20px;
+    width: 100%;
+    margin-top: 0;
+    left: 0;
+    padding-top: 7px;
+    padding-bottom: 8px
+}
+
+.breadcrumb.filemanager li {
+    cursor: pointer;
+    transition: color .1s linear;
+    position: relative
+}
+
+.breadcrumb.filemanager li:hover {
+    color: #555
+}
+
+.breadcrumb li .arrow {
+    display: none;
+    position: absolute;
+    bottom: -14px;
+    width: 12px;
+    height: 12px;
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+    background: #f0f0f0;
+    left: 50%;
+    border-right: 1px solid #efefef;
+    border-bottom: 1px solid #efefef
+}
+
+.breadcrumb li:last-child .arrow {
+    display: block
+}
+
+.breadcrumb li:first-child .arrow {
+    margin-left: -5px
+}
+
+.breadcrumb li {
+    color: #4DA7E8;
+    cursor: pointer;
+    font-weight: 700
+}
+
+.breadcrumb li a i.fa:focus, .breadcrumb li a i.fa:hover {
+    text-decoration: none;
+    color: var(--secundario_2);
+}
+
+.breadcrumb li:last-child {
+    color: #58595f;
+    cursor: pointer
+}
+
+.breadcrumb-container .toggle {
+    float: right;
+    position: absolute;
+    top: 11px;
+    cursor: pointer;
+    right: 5px;
+    color: #bbb;
+    transition: color .1s linear;
+    overflow: visible
+}
+
+.breadcrumb-container .toggle:hover {
+    color: #aaa
+}
+
+.breadcrumb-container .toggle span {
+    font-size: 9px;
+    text-transform: uppercase;
+    float: left;
+    top: 2px;
+    position: relative;
+    font-weight: 700;
+    right: 10px
+}
+
+.breadcrumb-container .toggle i {
+    font-size: 18px;
+    float: right;
+    margin-right: 5px;
+    position: relative;
+    top: -4px
+}
+
+.navbar .navbar-breadcrumb {
+    margin-left: 0;
+    background-color: transparent;
+    padding: 0;
+    float: left
+}
+
+.navbar .navbar-breadcrumb > li {
+    height: 60px;
+    line-height: 60px;
+    vertical-align: middle;
+    font-size: 1.5em
+}
+
+.breadcrumb li .icon {
+    text-decoration: none;
+}
+
+.navbar.navbar-inverse .navbar-breadcrumb li,
+.navbar.navbar-inverse .navbar-breadcrumb li a {
+    color: #FFF
+}
+
+.navbar .navbar-breadcrumb li,
+.navbar .navbar-breadcrumb li a,
+.navbar.navbar-default .navbar-breadcrumb li,
+.navbar.navbar-default .navbar-breadcrumb li a {
+    color: #353d47
+}

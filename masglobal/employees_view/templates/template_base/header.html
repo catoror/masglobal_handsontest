@@ -1,0 +1,62 @@
+{% load static %}
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<!-- Tell the browser to be responsive to screen width -->
+	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+
+	<!-- Bootstrap 3.3.7 -->
+	<link rel="stylesheet" href="{% static "/assets/template/bower_components/bootstrap/dist/css/bootstrap.min.css" %}">
+	<!-- Font Awesome -->
+	<link rel="stylesheet" href="{% static "/assets/template/bower_components/font-awesome/css/font-awesome.min.css" %}">
+	<!-- Theme style -->
+	<link rel="stylesheet" href="{% static "/assets/template/dist/css/AdminLTE.min.css" %}">
+
+    <!-- DataTables -->
+    <link rel="stylesheet" href="{% static "/assets/template/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css" %}">
+    <link rel="stylesheet" type="text/css" href="{% static "/assets/template/bower_components/responsive_datatables/css/responsive.dataTables.css" %}">
+
+	<!-- Google Font -->
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+
+	<link rel="stylesheet" href="{% static "/assets/css/app.css" %}">
+	<link rel="stylesheet" href="{% static "/assets/css/root_colors.css" %}">
+	<link rel="stylesheet" href="{% static "/assets/css/scroll-top.css" %}">
+	<link rel="stylesheet" href="{% static "/assets/css/styles.css" %}">
+	<link rel="stylesheet" href="{% static "/assets/css/skin-app.css" %}">
+
+    <style>
+        input[aria-invalid='true'] {
+            border: 3px dashed red;
+        }
+
+        select[aria-invalid='true'] {
+            border: 3px dashed red;
+        }
+
+        .has-error
+        {
+            border: 3px dashed red;
+        }
+
+        .help-block{
+            background: #c51244 !important;
+            padding: 10px !important;
+            border-radius: 0 !important;
+            position: relative;
+            display: inline-block !important;
+            box-shadow: 1px 1px 1px #aaaaaa;
+            margin-top: 10px;
+            color: white;
+        }
+
+        .help-block:before{
+            content: '';
+            width: 0;
+            height: 0;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-bottom: 10px solid #c51244;
+            position: absolute;
+            top: -10px;
+        }
+    </style>
